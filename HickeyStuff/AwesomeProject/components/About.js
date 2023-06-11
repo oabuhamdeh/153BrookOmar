@@ -5,12 +5,17 @@ const About = () => {
     return (
         <View>
             <Text style={styles.titleText}>About the App</Text>
-            <Text style={styles.paragraphText}> {'/n'} This app is designed for us ADHD folk, who can't get through everyday life without a myriad of alarms on our phones.</Text>
+            <Text style={styles.paragraphText}> {"\n"} This app is designed for us ADHD folk, who can't get through everyday life without a myriad of alarms
+            on our phones.{"\n"}{"\n"}</Text>
             <Text style={styles.titleText}>About the Creators</Text>
-            <Text style={styles.nameText}> Brooke </Text>
-            <Text style={styles.paragraphText}>    is a 22-year-old computer science major. </Text>
+            <View>
+              <Text style={styles.nameText}> Brooke </Text>
+              <Text style={styles.paragraphText}>  Brooke is a 22-year-old computer science major, and is an incoming junior. Her interests include writing,
+              reading, philosophy, psychology, world religions, Hebrew, Judaism, and studying Jewish texts/wisdom. She is interested in computer science
+              because she loves the problem-solving element, and she hopes to use it to create systems that improve peoples' lives. </Text>
+            </View>
             <Text style={styles.nameText}> Omar </Text>
-            <Text style={styles.paragraphText}>    is a year-old computer science major. </Text>
+            <Text style={styles.paragraphText}>  Omar is a year-old computer science major. </Text>
         </View>
     )
 }
