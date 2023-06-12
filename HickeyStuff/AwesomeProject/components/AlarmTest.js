@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
 
-const AddAlarm = ({num,color}) => {
+const AlarmTest = ({num,color}) => {
 
   const [hour,setHour] = useState(0)
   const [minute,setMinute] = useState(0)
@@ -99,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddAlarm;
+export default AlarmTest;
