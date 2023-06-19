@@ -6,12 +6,13 @@ import WeekSchedule from './WeekSchedule';
 import DaySchedule from './DaySchedule';
 import About from "./About";
 import Testing from "./Testing";
+import ButtonB from "./ButtonB";
 
 const Stack = createNativeStackNavigator();
 
 const HomeScreen = ({navigation}) => {
     return (
-     <View style={{ flexDirection:'row', justifyContent:'space-evenly'}}>
+     <View style={{ flexDirection:'column', justifyContent:'space-evenly', alignItems: 'center', flex: 1/3, backgroundColor: 'e2f4ad'}}>
             <Button
                 title="Alarms" // add new alarm (in alarms page)
                 onPress={() =>

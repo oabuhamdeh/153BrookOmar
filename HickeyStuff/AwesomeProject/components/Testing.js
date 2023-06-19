@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
-import {View, Button, Text, StyleSheet} from 'react-native';
+import {View, Button, Text, StyleSheet, FlatList} from 'react-native';
 //import AddAlarm from "./AddAlarm";
 import DigitView from "./DigitView";
 import AddAlarm from "./AddAlarm";
+
 
 const Testing = () => {
     return (
