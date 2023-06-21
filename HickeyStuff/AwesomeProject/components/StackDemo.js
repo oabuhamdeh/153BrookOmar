@@ -12,26 +12,26 @@ const Stack = createNativeStackNavigator();
 
 const HomeScreen = ({navigation}) => {
     return (
-     <View style={{ flexDirection:'column', justifyContent:'space-evenly', alignItems: 'center', flex: 1/3, backgroundColor: 'e2f4ad'}}>
-            <Button
+     <View style={{ flexDirection:'column', justifyContent:'space-evenly', alignItems: 'center', flex: .6, backgroundColor: 'e2f4ad'}}>
+            <ButtonB
                 title="Alarms" // add new alarm (in alarms page)
                 onPress={() =>
                 navigation.navigate('DaySchedule')
                 }
             />
-            <Button
+            <ButtonB
                 title="View week schedule"
                 onPress={() =>
                 navigation.navigate('WeekSchedule') 
                 }
             />
-            <Button
+            <ButtonB
                 title= "About"
                 onPress = {()=>
                 navigation.navigate('About')
                 }
             />
-            <Button
+            <ButtonB
                 title= "Test - Don't click me!"
                 onPress = {()=>
                 navigation.navigate('Testing')

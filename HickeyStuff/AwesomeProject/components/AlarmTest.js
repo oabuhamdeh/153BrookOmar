@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
+import ButtonSmall from "./ButtonSmall";
 
 const AlarmTest = ({num,color}) => {
 
@@ -14,16 +15,16 @@ const AlarmTest = ({num,color}) => {
                     padding:20,
                     backgroundColor: color,
                     flexDirection: "row"}} >
-                      <Text style={{fontSize: 70, flexDirection: "row", justifyContent: "center", padding:10, color:"white"}}>
+                      <Text style={{fontSize: 70, flexDirection: "row", justifyContent: "center", padding:10, color:"black"}}>
                             Alarm
                           </Text>
                       <View style={{flexDirection:"column"}}>
                         <View style={{flexDirection:"row"}}>
-                          <Button style={styles.button2}
+                          <ButtonSmall style={styles.button2}
                             title="+1 Hour"
                             onPress = {() => {setHour(hour+1)}}
                           />
-                          <Button style={styles.button}
+                          <ButtonSmall style={styles.button}
                             title="-1 Hour"
                             onPress = {() => {setHour(hour-1)}}
                           />
@@ -32,11 +33,11 @@ const AlarmTest = ({num,color}) => {
                           </Text>
                           </View>
                           <View style={{flexDirection:"row"}}>
-                          <Button style={styles.button}
+                          <ButtonSmall style={styles.button}
                             title="+5 Minute"
                             onPress = {() => {setMinute(minute+5)}}
                           />
-                          <Button style={styles.button}
+                          <ButtonSmall style={styles.button}
                             title="-5 Minute"
                             onPress = {() => {setMinute(minute-5)}}
                           />
