@@ -8,9 +8,10 @@ import AlarmTest from "./AlarmTest";
 
 const Testing = () => {
     return (
-        <View>
+        <View style={{flexDirection: 'column'}}>
             <Text style={styles.titleText}>Time to Test</Text>
                 <AlarmTest num="3" color="#f2fada"/>
+            
         </View>
     )
 }

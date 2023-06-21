@@ -1,20 +1,96 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Text, Button} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, View, Text, Button, TextInput, FlatList} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import ButtonSmall from "./ButtonSmall";
 
 const AlarmTest = ({num,color}) => {
 
   const [hour,setHour] = useState(0)
   const [minute,setMinute] = useState(0)
+  const [alarmTitle,setTitle] = useState("")
+  const [alarmDesc,setDesc] = useState("")
+  const [pomodoros,setPomodoros]= useState([])
+
+  // this loads in the data after the app has been rendered
+  useEffect(() => {getData()},[])
+
+  const getData = async () => {
+    try {
+      // the '@profile_info' can be any string
+      const jsonValue = await AsyncStorage.getItem('@pomodoros')
+      let data = null
+      if (jsonValue!=null) {
+        data = JSON.parse(jsonValue)
+        setPomodoros(data)
+        console.log('just set Info, Name and Email')
+      } else {
+        console.log('just read a null value from Storage')
+        // this happens the first time the app is loaded
+        // as there is nothing in storage...
+        setPomodoros([])
+        setHour(0)
+        setMinute(0)
+        setTitle("")
+        setDesc("")
+      }
+    } catch(e) {
+      console.log("error in getData ")
+      // this shouldn't happen, but its good practice
+      // to check for errors!
+      console.dir(e)
+      // error reading value
+    }
+}
+
+const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem('@pomodoros', jsonValue)
+      console.log('just stored '+jsonValue)
+    } catch (e) {
+      console.log("error in storeData ")
+      console.dir(e)
+      // saving error
+    }
+}
+
+
+const clearAll = async () => {
+    try {
+      console.log('in clearData')
+      await AsyncStorage.clear()
+    } catch(e) {
+      console.log("error in clearData ")
+      console.dir(e)
+      // clear error
+    }
+}
+
+
+// Each Pomorodo in the FlatList will be rendered as follows:
+const renderPomodoro = ({item}) => {
+return (
+  <View style={{flexDirection:'row',
+  justifyContent:'space-between', backgroundColor: '#'
+  }}>
+       <Text>{item.hour}</Text>
+       <Text>{item.minute}</Text>
+       <Text>{item.title} </Text>
+       <Text>{item.desc} </Text>
+  </View>
+)
+}
 
     return (
-      <View style={{flex: 1, 
-                    justifyContent: 'center',
+      <View style = {{flexDirection: 'column', height: 350}}>
+      <View style={{flex: .7, 
+                    justifyContent: 'space-evenly',
                     alignItems: 'center',
                     margin:20,
                     padding:20,
                     backgroundColor: color,
-                    flexDirection: "row"}} >
+                    flexDirection: "row", borderWidth: 0, borderColor: "#e2f4ad", borderRadius: 30, borderWidth: 10}} >
                       <Text style={{fontSize: 70, flexDirection: "row", justifyContent: "center", padding:10, color:"black"}}>
                             Alarm
                           </Text>
@@ -22,30 +98,100 @@ const AlarmTest = ({num,color}) => {
                         <View style={{flexDirection:"row"}}>
                           <ButtonSmall style={styles.button2}
                             title="+1 Hour"
-                            onPress = {() => {setHour(hour+1)}}
+                            onPress = {() => {
+                              if (hour == 23) {
+                                setHour(0)
+                              } else {
+                                setHour(hour+1)
+                              }
+                            }}
                           />
                           <ButtonSmall style={styles.button}
                             title="-1 Hour"
-                            onPress = {() => {setHour(hour-1)}}
+                            onPress = {() => {
+                              if (hour == 0) {
+                                setHour(23)
+                              } else {
+                                setHour(hour-1)
+                              }
+                            }}
                           />
-                          <Text style={{fontSize: 20, flexDirection: "row", justifyContent: "center", padding:10, color:"white"}}>
-                            {hour}
-                          </Text>
                           </View>
                           <View style={{flexDirection:"row"}}>
                           <ButtonSmall style={styles.button}
                             title="+5 Minute"
-                            onPress = {() => {setMinute(minute+5)}}
+                            onPress = {() => {
+                              if (minute == 55) {
+                                setMinute(0)
+                              } else {
+                                setMinute(minute+5)
+                              }
+                            }}
                           />
                           <ButtonSmall style={styles.button}
                             title="-5 Minute"
-                            onPress = {() => {setMinute(minute-5)}}
+                            onPress = {() => {
+                              if (minute == 0) {
+                                setMinute(55)
+                              } else {
+                                setMinute(minute-5)
+                              }
+                            }}
                           />
-                          <Text style={{fontSize: 20, flexDirection: "row", justifyContent: "center", padding:10, color:"white"}}>
-                            {minute}
-                          </Text>
                           </View>
+
                       </View>
+                      <Text style={{fontSize: 20, flexDirection: "row", justifyContent: "center", padding:10, color:"black"}}>
+                            {hour} : {minute}
+                          </Text>
+                      <TextInput 
+                            style={{fontSize:20, height: 50, width: 100, borderColor: "#e2f4ad", borderRadius: 10, borderWidth: 5, backgroundColor: "white"}}
+                            placeholder="Title"
+                            onChangeText={text => {
+                              setTitle(text);
+                            }}
+                            value = {alarmTitle}/>
+                      <TextInput 
+                            style={{fontSize:20, height: 50, width: 200, borderColor: "#e2f4ad", borderRadius: 10, borderWidth: 5, backgroundColor: "white"}}
+                            placeholder="Description"
+                            onChangeText={text => {
+                              setDesc(text);
+                            }}
+                            value = {alarmDesc}/>
+                      <ButtonSmall style={styles.button}
+                            title="Add"
+                            onPress = {() => 
+                              {
+                               const newPomodoros =
+                                 pomodoros.concat(
+                                   {'hour':hour,
+                                    'minute':minute,
+                                    'title':alarmTitle,
+                                    'desc':alarmDesc,
+                                    'completed':new Date()
+                                 })
+                               setPomodoros(newPomodoros)
+                               storeData(newPomodoros)
+                               setHour(0)
+                               setMinute(0)
+                               setTitle("")
+                               setDesc("")
+                             }}
+                             />
+                      <ButtonSmall style={styles.button}
+                            title="Delete"
+                            onPress = {() => 
+                              {
+                                clearAll()
+                                setPomodoros([])
+                             }}
+                             />
+      </View>
+        <FlatList
+         data={pomodoros.reverse()}
+          renderItem={renderPomodoro}
+          keyExtractor={item => item.hour}
+        />
       </View>
     )
   }
