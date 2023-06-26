@@ -9,7 +9,7 @@ import AlarmTest from "./AlarmTest";
 const Testing = () => {
     return (
         <View style={{flexDirection: 'column'}}>
-            <Text style={styles.titleText}>Time to Test</Text>
+            <Text style={styles.titleText}>Time to Test!</Text>
                 <AlarmTest num="3" color="#f2fada"/>
             
         </View>
@@ -18,9 +18,10 @@ const Testing = () => {
 
 const styles = StyleSheet.create({
     titleText: {
-      fontSize: 50,
+      fontSize: 30,
       fontWeight: 'bold',
       textAlign: 'center',
+      padding: 10,
     },
     paragraphText: {
         fontSize: 20,

@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 
 const HomeScreen = ({navigation}) => {
     return (
-     <View style={{ flexDirection:'column', justifyContent:'space-evenly', alignItems: 'center', flex: .6, backgroundColor: 'e2f4ad'}}>
+     <View style={{ flexDirection:'column', justifyContent:'space-evenly', alignItems: 'center', flex: .6, backgroundColor: 'whitesmoke'}}>
             <ButtonB
                 title="Alarms" // add new alarm (in alarms page)
                 onPress={() =>
@@ -39,10 +39,6 @@ const HomeScreen = ({navigation}) => {
             />
       </View>
     );
-  };
-
-  const ProfileScreen = ({navigation, route}) => {
-    return <Text>This is {route.params.name}'s profile</Text>;
   };
 
 const MyStack = () => {

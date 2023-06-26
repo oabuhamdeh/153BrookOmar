@@ -91,8 +91,8 @@ return (
                     padding:20,
                     backgroundColor: color,
                     flexDirection: "row", borderWidth: 0, borderColor: "#e2f4ad", borderRadius: 30, borderWidth: 10}} >
-                      <Text style={{fontSize: 70, flexDirection: "row", justifyContent: "center", padding:10, color:"black"}}>
-                            Alarm
+                      <Text style={{fontSize: 20, flexDirection: "row", justifyContent: "center", padding:10, color:"black"}}>
+                            Alarm{'\n'}
                           </Text>
                       <View style={{flexDirection:"column"}}>
                         <View style={{flexDirection:"row"}}>

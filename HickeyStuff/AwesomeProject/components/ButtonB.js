@@ -5,7 +5,7 @@ export default function Button({title, theme, color, onPress, icon}) {
     if (theme === "primary") {
         return (
           <View
-          style={[styles.buttonContainer, { borderWidth: 4, borderColor: "#ffd33d", borderRadius: 18 }]}
+          style={[styles.buttonContainer, { borderWidth: 1, borderColor: "#ffd33d", borderRadius: 18 }]}
           >
             <Pressable
               style={[styles.button, { backgroundColor: "#fff" }]}
@@ -32,7 +32,7 @@ export default function Button({title, theme, color, onPress, icon}) {
       } else {
         return (
           <View
-          style={[styles.buttonContainer, { borderWidth: 4, borderColor: "#e2f4ad", borderRadius: 18 }]}
+          style={[styles.buttonContainer, { borderWidth: 1, borderColor: "#e2f4ad", borderRadius: 18 }]}
           >
             <Pressable
               style={[styles.button, { backgroundColor: "#fff" }]}
