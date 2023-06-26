@@ -3,13 +3,15 @@ import {View, Button, Text, StyleSheet, FlatList} from 'react-native';
 //import AddAlarm from "./AddAlarm";
 import DigitView from "./DigitView";
 import AddAlarm from "./AddAlarm";
+import AlarmTest from "./AlarmTest";
 
 
 const Testing = () => {
     return (
-        <View>
+        <View style={{flexDirection: 'column'}}>
             <Text style={styles.titleText}>Time to Test</Text>
-                <AddAlarm num="3" color="green"/>
+                <AlarmTest num="3" color="#f2fada"/>
+            
         </View>
     )
 }

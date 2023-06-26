@@ -32,7 +32,7 @@ export default function Button({title, theme, color, onPress, icon}) {
       } else {
         return (
           <View
-          style={[styles.buttonContainer, { borderWidth: 4, borderColor: "#e2f4ad", borderRadius: 18 }]}
+          style={[styles.buttonContainer, { borderWidth: 0, borderColor: "#e2f4ad", borderRadius: 18 }]}
           >
             <Pressable
               style={[styles.button, { backgroundColor: "#fff" }]}
@@ -63,12 +63,12 @@ export default function Button({title, theme, color, onPress, icon}) {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    width: 320,
-    height: 68,
+    width: 100,
+    height: 50,
     marginHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 3,
+    padding: 0,
   },
   button: {
     borderRadius: 10,

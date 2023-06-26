@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
 
+
 const AddAlarm = ({num,color}) => {
 
   const [hour,setHour] = useState(0)
