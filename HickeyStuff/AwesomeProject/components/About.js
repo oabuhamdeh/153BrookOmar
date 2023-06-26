@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {View, Button, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TextInput} from 'react-native';
 
 const About = () => {
     return (
@@ -15,7 +15,7 @@ const About = () => {
               because she loves the problem-solving element, and she hopes to use it to create systems that improve peoples' lives. </Text>
             </View>
             <Text style={styles.nameText}> Omar </Text>
-            <Text style={styles.paragraphText}>  Omar is a year-old computer science major. </Text>
+            <Text style={styles.paragraphText}>  Omar is a computer science major who has yet to add in an adequate description. </Text>
         </View>
     )
 }

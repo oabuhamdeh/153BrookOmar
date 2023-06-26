@@ -1,48 +1,85 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import DigitView from './DigitView';
 
+const getWeek = (firstDay) => {
+  let week=[];
+  for(let i = 1; i < 8; i++){
+    week.push(
+      <Text key={i} style={styles.days}>{firstDay}</Text>
+    )
+    firstDay=firstDay+1;
+  }
+  return week;
+}
+
+const getMonth = () => {
+  let month = [];
+  let count=1;
+  for(let i = 1; i < 6; i++){
+    month.push(
+    <View key={i} style={styles.days}>
+      <Text>{getWeek(count)}</Text>
+    </View>
+    )
+    count=count+7;
+  }
+return month;
+}
 
 const App = () => {
   return (
-    <View
-      style={[
-                styles.container,
-               {flexDirection: 'column',backgroundColor:'white',},
-             ]}>
-      <View style={{flex: 1, flexDirection: 'row'}} >
-        <DigitView num = "1" color="red"/>
-        <DigitView num = "2" color="green"/>
-        <DigitView num = "3" color="blue"/>
+    <View>
+      <View style={styles.monthName}>
+        June
       </View>
-      <View style={{flex: 1, flexDirection: 'row'}} >
-        <DigitView num = "4" color="#fde"/>
-        <DigitView num = "5" color="#fca"/>
-        <DigitView num = "6" color="#999"/>
+      <View style={styles.daysOfWeek}>
+        <Text style={styles.daysOfWeek}>Sunday</Text>
+        <Text style={styles.daysOfWeek}>Monday</Text>
+        <Text style={styles.daysOfWeek}>Tuesday</Text>
+        <Text style={styles.daysOfWeek}>Wednesday</Text>
+        <Text style={styles.daysOfWeek}>Thursday</Text>
+        <Text style={styles.daysOfWeek}>Friday</Text>
+        <Text style={styles.daysOfWeek}>Saturday</Text>
       </View>
-      <View style={{flex: 1, flexDirection: 'row'}} >
-        <DigitView num = "7" color="#ff0000"/>
-        <DigitView num = "8" color="#00af00"/>
-        <DigitView num = "9" color="#aaaaff"/>
-      </View>
-      <View style={{flex: 1, flexDirection: 'row'}} >
-        <DigitView num = "" color="white"/>
-        <DigitView num = "0" color="lightgreen"/>
-        <DigitView num = "" color="#fff"/>
-      </View>
-      
+      <Text>{getMonth()}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  monthName: {
     flex: 1,
-    padding: 100,
-    margin:200,
-    borderWidth:20,
-    borderColor:"#00f",
+    padding: 40,
+    margin:20,
+    borderWidth:2,
+    borderColor:"#fff",
+    backgroundColor:"#F2FADA",
+    fontWeight:'bold',
+    justifyContent:'center',
+    textAlign:'center',
+    fontSize:40,
+  },
+  daysOfWeek: {
+    flex: 5,
+    borderWidth:1,
+    borderColor:"black",
+    fontSize:30,
+    justifyContent:'center',
+    textAlign:"center",
+    flexDirection:'row',
+  },
+  days: {
+    flex: 5,
+    borderWidth:1,
+    borderColor:"black",
+    fontSize:30,
+    textAlign:"left",
+    flexDirection:'row',
+    marginLeft: 60,
+    marginRight: 60,
+    padding: 30,
   },
 });
 
