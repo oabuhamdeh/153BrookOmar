@@ -7,6 +7,8 @@ import DaySchedule from './DaySchedule';
 import About from "./About";
 import Testing from "./Testing";
 import ButtonB from "./ButtonB";
+import RedesignAlarm from "./RedesignAlarm";
+import Calendar from "./Calendar";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +39,18 @@ const HomeScreen = ({navigation}) => {
                 navigation.navigate('Testing')
                 }
             />
+            <ButtonB
+                title="Testing2"
+                onPress = {()=>
+                navigation.navigate('RedesignAlarm')
+                }
+            />
+            <ButtonB
+                title="Calendar"
+                onPress = {()=>
+                navigation.navigate('Calendar')
+                }
+            />
       </View>
     );
   };
@@ -52,6 +66,8 @@ const MyStack = () => {
         <Stack.Screen name="WeekSchedule" component={WeekSchedule} />
         <Stack.Screen name="About" component ={About} />
         <Stack.Screen name="Testing" component ={Testing} />
+        <Stack.Screen name="RedesignAlarm" component ={RedesignAlarm} />
+        <Stack.Screen name="Calendar" component ={Calendar} />
       </Stack.Navigator>
     </NavigationContainer>
   );

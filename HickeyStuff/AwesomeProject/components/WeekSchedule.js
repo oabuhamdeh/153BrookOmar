@@ -1,7 +1,14 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, Platform, FlatList} from 'react-native';
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DigitView from './DigitView';
+
+<Calendar
+  onDayPress={day => {
+    console.log('selected day', day);
+  }}
+/>
 
 const getWeek = (firstDay) => {
   let week=[];
@@ -31,19 +38,19 @@ return month;
 const App = () => {
   return (
     <View>
-      <View style={styles.monthName}>
-        June
+      <View>
+        <Text style={styles.monthName}>July</Text>
       </View>
       <View style={styles.daysOfWeek}>
-        <Text style={styles.daysOfWeek}>Sunday</Text>
-        <Text style={styles.daysOfWeek}>Monday</Text>
+        <Text style={styles.daysOfWeek}>Sunday - July 1</Text>
+        <Text style={styles.daysOfWeek}>Monday - July 2</Text>
         <Text style={styles.daysOfWeek}>Tuesday</Text>
         <Text style={styles.daysOfWeek}>Wednesday</Text>
         <Text style={styles.daysOfWeek}>Thursday</Text>
         <Text style={styles.daysOfWeek}>Friday</Text>
         <Text style={styles.daysOfWeek}>Saturday</Text>
       </View>
-      <Text>{getMonth()}</Text>
+      {/* <Text>{getMonth()}</Text> */}
     </View>
   );
 };
@@ -59,16 +66,18 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     justifyContent:'center',
     textAlign:'center',
-    fontSize:40,
+    fontSize:20,
   },
   daysOfWeek: {
-    flex: 5,
     borderWidth:1,
     borderColor:"black",
-    fontSize:30,
+    backgroundColor:"#4F4F4F",
+    color:"#fff",
+    fontSize:20,
+    fontWeight:'300',
     justifyContent:'center',
     textAlign:"center",
-    flexDirection:'row',
+    flexDirection:'column',
   },
   days: {
     flex: 5,
