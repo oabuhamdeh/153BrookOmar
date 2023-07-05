@@ -54,33 +54,24 @@ const App = () => {
         );
     }
 
-    return (
-        <View style={styles.container}>
-            <Agenda
-                items={items}
-                loadItemsForMonth={loadItems}
-                refreshControl={null}
-                showClosingKnob={true}
-                refreshing={false}
-                renderItem={renderItem}
-                enableSwipeMonths
-            />
-            <StatusBar />
-        </View>
-    );
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    item: {
-        flex: 1,
-        borderRadius: 5,
-        padding: 10,
-        marginRight: 10,
-        marginTop: 17
-    },
-});
+  return (
+    <Calendar theme={{
+        backgroundColor: '#ffffff',
+        calendarBackground: '#ffffff',
+        textSectionTitleColor: '#b6c1cd',
+        selectedDayBackgroundColor: '#00adf5',
+        selectedDayTextColor: '#ffffff',
+        todayTextColor: '#00adf5',
+        dayTextColor: '#2d4150',
+        textDisabledColor: '#d9e1e8',}}
+      onDayPress={day => {
+        setSelected(day.dateString);
+      }}
+      markedDates={{
+        [selected]: {selected: true, disableTouchEvent: true, selectedDotColor: 'orange'}
+      }}
+    />
+  );
+};
 
 export default App;
