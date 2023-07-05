@@ -59,7 +59,6 @@ const App = () => {
             <Agenda
                 items={items}
                 loadItemsForMonth={loadItems}
-                selected={'2023-07-07'}
                 refreshControl={null}
                 showClosingKnob={true}
                 refreshing={false}
