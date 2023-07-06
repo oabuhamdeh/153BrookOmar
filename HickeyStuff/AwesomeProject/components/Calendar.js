@@ -64,6 +64,7 @@ const App = () => {
                 showClosingKnob={true}
                 refreshing={false}
                 renderItem={renderItem}
+                enableSwipeMonths
             />
             <StatusBar />
         </View>
