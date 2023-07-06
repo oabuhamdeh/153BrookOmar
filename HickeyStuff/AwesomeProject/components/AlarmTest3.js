@@ -44,22 +44,69 @@ const AlarmTest = ({num,color}) => {
   const responseListener = useRef();
 
   async function schedulePushNotification() {
+    const da = new Date(Date.now());
     const trigger = new Date(Date.now());
     trigger.setUTCDate(trigger.getUTCDate+day);
-    trigger.setHours(hour);
-    trigger.setMinutes(minute);
-    trigger.setSeconds(0);
+    const c = trigger.getHours();
+    console.log("Date now: " + Date.now());
+    console.log("Date now: " + new Date(Date.now()).getHours());
+    console.log("Date now: " + da.getHours());
+    da.setHours(hour);
 
-    await Notifications.scheduleNotificationAsync({
-      content: {
-        title: alarmTitle,
-        body: alarmDesc,
-        data: { data: 'goes here' },
-        sound: "Bobby.mp3",
-      },
-      trigger,
-  
-    });
+
+    console.log("hours after: " + trigger.getHours());
+    console.log("minutes before: " + trigger.getMinutes());
+    da.setMinutes(minute);
+    console.log("minutes after: " + trigger.getMinutes());
+    da.setSeconds(0);
+    
+    if (da.getTime() < Date.now()) {
+      const da = new Date(Date.now());
+      da.setMinutes(da.getMinutes() + 1);
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: alarmTitle,
+          body: alarmDesc,
+          data: { data: 'goes here' },
+          sound: "Bobby.mp3",
+        },
+        trigger: da,
+    
+      });
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: "Alarm: " + alarmTitle,
+          body: "Set for Month: " + da.getMonth() + " Day: " + da.getDate() + " Time: " + da.getHours() + ":" + da.getMinutes(),
+          data: { data: 'goes here' },
+          sound: "Bobby.mp3",
+        },
+        trigger: {seconds: 2},
+    
+      });
+    } else {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: alarmTitle,
+          body: alarmDesc,
+          data: { data: 'goes here' },
+          sound: "Bobby.mp3",
+        },
+        trigger: da,
+    
+      });
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: "Alarm: " + alarmTitle,
+          body: "Set for Month: " + da.getMonth() + "Day: " + da.getUTCDay() + "Time: " + da.getHours() + ":" + da.getSeconds(),
+          data: { data: 'goes here' },
+          sound: "Bobby.mp3",
+        },
+        trigger: {seconds: 2},
+    
+      });
+    }
+    console.log("da time: " + da.getTime());
+    console.log("today time: " + Date.now());
   }
 
   useEffect(() => {
