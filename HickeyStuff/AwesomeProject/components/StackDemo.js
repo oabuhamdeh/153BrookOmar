@@ -2,7 +2,6 @@ import * as React from 'react';
 import {Button,Text,View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import WeekSchedule from './WeekSchedule';
 import DaySchedule from './DaySchedule';
 import About from "./About";
 import Testing2 from "./Testing2";
@@ -24,19 +23,13 @@ const HomeScreen = ({navigation}) => {
                 }
             />
             <ButtonB
-                title="View week schedule"
-                onPress={() =>
-                navigation.navigate('WeekSchedule') 
-                }
-            />
-            <ButtonB
                 title= "About"
                 onPress = {()=>
                 navigation.navigate('About')
                 }
             />
             <ButtonB
-                title= "Test - Don't click me!"
+                title= "Official alarm setter"
                 onPress = {()=>
                 navigation.navigate('Testing4')
                 }
@@ -68,10 +61,8 @@ const MyStack = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} style ={{flex: .5}}
-          options={{title: 'Welcome'}}
-        />
+          options={{title: 'Welcome'}}/>
         <Stack.Screen name="DaySchedule" component={DaySchedule} />
-        <Stack.Screen name="WeekSchedule" component={WeekSchedule} />
         <Stack.Screen name="About" component ={About} />
         <Stack.Screen name="Testing2" component ={Testing2} />
         <Stack.Screen name="Testing4" component ={Testing4} />

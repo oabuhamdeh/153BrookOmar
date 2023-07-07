@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {View, Button, Text, StyleSheet, FlatList, Platform} from 'react-native';
+import {View, Button, Text, StyleSheet, FlatList, ScrollView, Platform} from 'react-native';
 import AlarmTest3 from "./AlarmTest3";
 
 const Testing = () => {
   return (
-      <View style={{flexDirection: 'column'}}>
-              <AlarmTest3 num="3" color="#f2fada"/>
+      <ScrollView style={{flexDirection: 'column'}}>
+              <AlarmTest3 num="3" color="#fff"/>
           
 
-      </View>
+      </ScrollView>
   )
 }
 

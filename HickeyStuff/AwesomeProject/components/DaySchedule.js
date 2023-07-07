@@ -1,17 +1,17 @@
 import React,{useState} from 'react';
-import {View, Button, Text} from 'react-native';
+import {View, Button, Text, ScrollView} from 'react-native';
 
 const App = () => {
     const [numAlarms,setNumAlarms] = useState(0)
     const [isPressed, setIsPressed] = useState(false);
     const [numPressed, setNumPressed] = useState(0);
     return (
-      <View>
-            <Text style = {{fontSize: 40}}>
+      <ScrollView>
+            <Text style = {{fontSize: 20, fontWeight:'200'}}>
                 Alarms: {numAlarms} current alarms
             </Text>
-            <View style={{flex: 5, flexDirection: 'row'}} >
-                Button pressed {numPressed} times
+            <View style={{flex: 5, flexDirection: 'column'}} >
+                {/* <Text>Button pressed {numPressed} times</Text> */}
                 <Button
                     title="Add Alarm"
                     onPress = {() => setNumAlarms(numAlarms+1)}
@@ -28,7 +28,7 @@ const App = () => {
                     title={isPressed ? 'I have been pressed an odd number of times!' : 'I have been pressed an even number of times!'}
       />
             </View>
-      </View>
+      </ScrollView>
     )
   }
 

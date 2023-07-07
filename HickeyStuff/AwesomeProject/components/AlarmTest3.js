@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import {StyleSheet, View, Text, Button, TextInput, FlatList} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Notifications from 'expo-notifications';
-
-
 import ButtonSmall from "./ButtonSmall";
 
 Notifications.setNotificationHandler({
@@ -22,7 +20,7 @@ async function registerForPushNotificationsAsync() {
       name: 'default',
       importance: Notifications.AndroidImportance.MAX,
       vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#FF231F7C',
+      lightColor: '#fff',
     });
   }
 
@@ -206,7 +204,7 @@ return (
                     margin:20,
                     padding:20,
                     backgroundColor: color,
-                    flexDirection: "column", borderWidth: 0, borderColor: "#e2f4ad", borderRadius: 30, borderWidth: 10}} >
+                    flexDirection: "column", borderWidth: 0, borderColor: "#fff", borderRadius: 30, borderWidth: 10}} >
                       <Text style={{fontSize: 20, flexDirection: "row", justifyContent: "center", padding:10, color:"black"}}>
                             Add New Alarm{'\n'}
                           </Text>
@@ -279,17 +277,19 @@ return (
                           </View>
                       </View>
                       <Text style={{fontSize: 20, flexDirection: "row", justifyContent: "center", padding:10, color:"black", paddingTop: 20, paddingBottom: 20}}>
-                            {hour} : {minute} Days from now: {day}
+                            {hour} : {minute}{'\n'}
+                            Days from now: {day}
                           </Text>
                       <TextInput 
-                            style={{fontSize:20, height: 50, width: 100, borderColor: "#e2f4ad", borderRadius: 10, borderWidth: 5, backgroundColor: "white",}}
+                            style={{fontSize:20, height: 50, width: 100, borderColor: "aliceblue", borderRadius: 10, borderWidth: 3, backgroundColor: "white",}}
                             placeholder="Title"
                             onChangeText={text => {
                               setTitle(text);
                             }}
                             value = {alarmTitle}/>
+                      <Text>{'\n'}</Text>
                       <TextInput 
-                            style={{fontSize:20, height: 50, width: 200, borderColor: "#e2f4ad", borderRadius: 10, borderWidth: 5, backgroundColor: "white",
+                            style={{fontSize:20, height: 50, width: 200, borderColor: "aliceblue", borderRadius: 10, borderWidth: 3, backgroundColor: "white",
                           
                           }}
                             placeholder="Description"
@@ -323,8 +323,6 @@ return (
       </View>
     )
   }
-
-const greeting = () => {console.log("Hello World!")}
 
 const styles = StyleSheet.create({
   container: {

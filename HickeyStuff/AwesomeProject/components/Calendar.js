@@ -25,7 +25,7 @@ const App = () => {
                     const numItems = Math.floor(Math.random() * 3 + 1);
                     for (let j = 1; j < numItems; j++) {
                         items[strTime].push({
-                            name: 'Item for ' + strTime + ' #' + j,
+                            name: 'Name of alarm' + "\n" + 'Description of alarm' + "\n" + 'Alarm #'+ j + " on " + strTime,
                             height: Math.max(10, Math.floor(Math.random() * 150)),
                             day: strTime
                         });
@@ -42,7 +42,9 @@ const App = () => {
 
     const renderItem = (item) => {
         return (
-            <TouchableOpacity style={styles.item}>
+            <TouchableOpacity style={styles.item} onPress={() => {
+                alert('edit alarm');
+              }}>
                 <Card>
                     <Card.Content>
                         <View>

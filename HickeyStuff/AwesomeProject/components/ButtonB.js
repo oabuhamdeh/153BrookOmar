@@ -5,7 +5,7 @@ export default function Button({title, theme, color, onPress, icon}) {
     if (theme === "primary") {
         return (
           <View
-          style={[styles.buttonContainer, { borderWidth: 1, borderColor: "#ffd33d", borderRadius: 18 }]}
+          style={[styles.buttonContainer, { borderWidth: 1, borderColor: "aliceblue", borderRadius: 18 }]}
           >
             <Pressable
               style={[styles.button, { backgroundColor: "#fff" }]}
@@ -15,24 +15,24 @@ export default function Button({title, theme, color, onPress, icon}) {
                 <FontAwesome
                 name="picture-o"
                 size={18}
-                color="#25292e"
+                color="black"
                 style={styles.buttonIcon}
               />
               }
               <FontAwesome
                 name="picture-o"
                 size={18}
-                color="#25292e"
+                color="black"
                 style={styles.buttonIcon}
               />
-              <Text style={[styles.buttonLabel, { color: "#25292e" }]}>{title}</Text>
+              <Text style={[styles.buttonLabel, { color: "black" }]}>{title}</Text>
             </Pressable>
         </View>
         );
       } else {
         return (
           <View
-          style={[styles.buttonContainer, { borderWidth: 1, borderColor: "#e2f4ad", borderRadius: 18 }]}
+          style={[styles.buttonContainer, { borderWidth: 3, borderColor: "whitesmoke", borderRadius: 18 }]}
           >
             <Pressable
               style={[styles.button, { backgroundColor: "#fff" }]}
@@ -46,7 +46,7 @@ export default function Button({title, theme, color, onPress, icon}) {
                 style={styles.buttonIcon}
               />
         */}
-              <Text style={[styles.buttonLabel, { color: "#25292e" }]}>{title}</Text>
+              <Text style={[styles.buttonLabel, { color: "black" }]}>{title}</Text>
             </Pressable>
         </View>
         );
