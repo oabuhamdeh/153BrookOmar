@@ -4,7 +4,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import DaySchedule from './DaySchedule';
 import About from "./About";
-import Testing2 from "./Testing2";
 import Testing4 from "./Testing4";
 import ButtonB from "./ButtonB";
 import RedesignAlarm from "./RedesignAlarm";
@@ -35,12 +34,6 @@ const HomeScreen = ({navigation}) => {
                 }
             />
             <ButtonB
-                title="Testing2"
-                onPress = {()=>
-                navigation.navigate('Testing2')
-                }
-            />
-            <ButtonB
                 title="Calendar"
                 onPress = {()=>
                 navigation.navigate('Calendar')
@@ -64,7 +57,6 @@ const MyStack = () => {
           options={{title: 'Welcome'}}/>
         <Stack.Screen name="DaySchedule" component={DaySchedule} />
         <Stack.Screen name="About" component ={About} />
-        <Stack.Screen name="Testing2" component ={Testing2} />
         <Stack.Screen name="Testing4" component ={Testing4} />
         <Stack.Screen name="RedesignAlarm" component ={RedesignAlarm} />
         <Stack.Screen name="Calendar" component ={Calendar} />

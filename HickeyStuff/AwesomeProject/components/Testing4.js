@@ -6,8 +6,6 @@ const Testing = () => {
   return (
       <ScrollView style={{flexDirection: 'column'}}>
               <AlarmTest3 num="3" color="#fff"/>
-          
-
       </ScrollView>
   )
 }
