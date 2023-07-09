@@ -4,9 +4,9 @@ import AlarmTest3 from "./AlarmTest3";
 
 const Testing = () => {
   return (
-      <ScrollView style={{flexDirection: 'column'}}>
+      <View style={{flexDirection: 'column'}}>
               <AlarmTest3 num="3" color="#fff"/>
-      </ScrollView>
+      </View>
   )
 }
 
