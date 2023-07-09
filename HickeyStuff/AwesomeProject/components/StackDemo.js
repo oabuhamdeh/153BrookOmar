@@ -8,7 +8,6 @@ import Testing4 from "./Testing4";
 import ButtonB from "./ButtonB";
 import RedesignAlarm from "./RedesignAlarm";
 import Calendar from "./Calendar";
-// import Alarm from "./Alarm-APP-with-React-Native/App";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,12 +38,6 @@ const HomeScreen = ({navigation}) => {
                 navigation.navigate('Calendar')
                 }
             />
-            {/* <ButtonB
-                title="AlarmTest"
-                onPress = {()=>
-                navigation.navigate('Alarm')
-                }
-            /> */}
       </View>
     );
   };
@@ -60,7 +53,6 @@ const MyStack = () => {
         <Stack.Screen name="Testing4" component ={Testing4} />
         <Stack.Screen name="RedesignAlarm" component ={RedesignAlarm} />
         <Stack.Screen name="Calendar" component ={Calendar} />
-        {/* <Stack.Screen name="Alarm" component ={Alarm} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
