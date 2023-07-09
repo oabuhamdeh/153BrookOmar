@@ -11,15 +11,17 @@ const App = () => {
                 Alarms: {numAlarms} current alarms
             </Text>
             <View style={{flex: 5, flexDirection: 'column'}} >
-                {/* <Text>Button pressed {numPressed} times</Text> */}
-                <Button
-                    title="Add Alarm"
-                    onPress = {() => setNumAlarms(numAlarms+1)}
-                />
-                <Button
-                    title="Delete Alarm"
-                    onPress = {() => setNumAlarms(numAlarms-1)}
-                />
+                <View style={{flexDirection:'row'}}>
+                    <Button
+                        title="Add Alarm"
+                        onPress = {() => setNumAlarms(numAlarms+1)}
+                    />
+                    <Button
+                        title="Delete Alarm"
+                        onPress = {() => setNumAlarms(numAlarms-1)}
+                    />
+                </View>
+                <Text>Button pressed {numPressed} times</Text>
                 <Button
                     onPress={() => {
                         setIsPressed(!isPressed);
@@ -27,6 +29,7 @@ const App = () => {
                         }}
                     title={isPressed ? 'I have been pressed an odd number of times!' : 'I have been pressed an even number of times!'}
       />
+
             </View>
       </ScrollView>
     )
